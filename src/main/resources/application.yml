@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: 331-backend
+  profiles:
+    active:
+      - db
+  datasource:
+    url: jdbc:postgresql://localhost:5432/selabdb
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create
