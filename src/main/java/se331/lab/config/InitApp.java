@@ -5,15 +5,12 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import se331.lab.entity.Event;
-import se331.lab.entity.Organizer;
 import se331.lab.repository.EventRepository;
-import se331.lab.repository.OrganizerRepository;
 
 @Component
 @RequiredArgsConstructor
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final EventRepository eventRepository;
-    final OrganizerRepository organizerRepository;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
@@ -25,7 +22,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("3rd Sept")
                 .time("3.00-4.00 pm.")
                 .petsAllowed(false)
-                .organizer("CAMT").build());
+                .build());
         eventRepository.save(Event.builder()
                 .category("Academic")
                 .title("Commencement Day")
@@ -34,7 +31,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("21th Jan")
                 .time("8.00am-4.00 pm.")
                 .petsAllowed(false)
-                .organizer("CMU").build());
+                .build());
         eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Loy Krathong")
@@ -43,7 +40,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("21th Nov")
                 .time("8.00-10.00 pm.")
                 .petsAllowed(false)
-                .organizer("Chiang Mai").build());
+                .build());
         eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Songkran")
@@ -52,23 +49,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("13th April")
                 .time("10.00am - 6.00 pm.")
                 .petsAllowed(true)
-                .organizer("Chiang Mai Municipality").build());
-
-        organizerRepository.save(Organizer.builder()
-                .organizationName("CAMT")
-                .address("CAMT Building")
-                .build());
-        organizerRepository.save(Organizer.builder()
-                .organizationName("CMU")
-                .address("CMU Convention hall")
-                .build());
-        organizerRepository.save(Organizer.builder()
-                .organizationName("Chiang Mai")
-                .address("Ping River")
-                .build());
-        organizerRepository.save(Organizer.builder()
-                .organizationName("Chiang Mai Municipality")
-                .address("Chiang Mai Moat")
                 .build());
     }
 }
